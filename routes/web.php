@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Homecontroller::class,'homepage']);
 
+Route::get('/home', [Homecontroller::class,'index'])->middleware('auth')->name('home');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
