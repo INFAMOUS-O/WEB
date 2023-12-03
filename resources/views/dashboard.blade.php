@@ -12,17 +12,14 @@
         <div class="font-sans font-bold pt-7 pb-1 border-b text-black"><h1>Upload New Post</h1></div>
         <form class="mt-12" method="POST" action="">
             @csrf
-            <form>
-
-                
                 <!-- Image preview -->
                 <div id="imagePreviewContainer" class="w-[300px] h-[260px] mb-4 overflow-hidden hidden">
                     <img id="previewImage" class="object-cover w-full h-full" src="" alt="Image Preview">
                 </div>
 
                 <!-- Input field for image selection -->
-                <input type="file" id="imageInput" class="hidden" accept="image/*">
-                <label for="imageInput" class="cursor-pointer w-[300px] flex items-center mb-4 p-4 bg-white border border-gray-300 rounded-md shadow-md">
+                <input type="file" id="image" class="hidden" accept="image/*">
+                <label for="image" class="cursor-pointer w-[300px] flex items-center mb-4 p-4 bg-white border border-gray-300 rounded-md shadow-md">
                   <span class="text-gray-700 mr-4">Select a picture</span>
                 </label>
             
@@ -30,7 +27,7 @@
                 <!-- Image description -->
                 <div class="mb-4">
                   <label for="description" class="block text-gray-700 mb-2">Description</label>
-                  <textarea id="description" name="imagedescription" rows="5" class=" w-[300px] w-full p-2 border border-gray-300 text-black rounded-md" placeholder="Enter image description..."></textarea>
+                  <textarea id="description" name="description" rows="5" class="  w-full p-2 border border-gray-300 text-black rounded-md" placeholder="Enter image description..."></textarea>
                 </div>
             
                 <!-- Submit button -->
@@ -39,7 +36,7 @@
               </form>
             
               <script>
-                document.getElementById('imageInput').addEventListener('change', function (event) {
+                document.getElementById('image').addEventListener('change', function (event) {
                   const previewImage = document.getElementById('previewImage');
                   const imagePreviewContainer = document.getElementById('imagePreviewContainer');
             

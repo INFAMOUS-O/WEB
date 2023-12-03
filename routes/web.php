@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboardcontroller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +21,7 @@ Route::get('/', [Homecontroller::class,'homepage']);
 
 Route::get('/home', [Homecontroller::class,'index'])->middleware('auth')->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [Dashboardcontroller::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
