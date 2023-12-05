@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class Dashboardcontroller extends Controller
 {
@@ -12,31 +13,17 @@ class Dashboardcontroller extends Controller
         return view('dashboard');
     }
 
-    public function Dashboardposting(Request $request)
-    {
-        $user=Auth()->user();
-        $userid=$user->id;
-
-        $post = new Post;
-        $post->image = $request->image;
-
-        $image = $request->image;
-
-        if($image)
-        {
-            $imagename=time().'.'.$image->getClientOriginalExtensions();
-
-            $request->image->move('postname',$imagename);
-
-            $post->image=$imagename;
+   public function create()
+   {
+    $user = Auth::user();
+    //dd($user);
+    return view ('dashboard',compact('user'));
 
 
-        }
+   }
 
-        $post->save();
-
-        return redirect()->back();
-
-        
-    }
+   public function store(Request $request)
+   {
+    dd($request);
+   }
 }

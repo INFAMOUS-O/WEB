@@ -10,7 +10,7 @@
 
     <div class="fixed h-screen items-center  w-[400px] ml-[210px] flex flex-col bg-white  text-white shadow-lg">
         <div class="font-sans font-bold pt-7 pb-1 border-b text-black"><h1>Upload New Post</h1></div>
-        <form class="mt-12" action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('dashboard', ['id' => Auth::user()->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
                 <!-- Image preview -->
                 <div id="imagePreviewContainer" class="w-[300px] h-[260px] mb-4 overflow-hidden hidden">
@@ -22,16 +22,21 @@
                 <label for="image" class="cursor-pointer w-[300px] flex items-center mb-4 p-4 bg-white border border-gray-300 rounded-md shadow-md">
                   <span class="text-gray-700 mr-4">Select a picture</span>
                 </label>
+                 <div class="">
+        <label for="image_id">Upload Photos: </label>
+        <input type="file" name="image_id[]" multiple class="">
+    </div>
             
             
                 <!-- Image description -->
                 <div class="mb-4">
-                  <label for="description" class="block text-gray-700 mb-2">Description</label>
-                  <textarea id="description" name="description" rows="5" class="  w-full p-2 border border-gray-300 text-black rounded-md" placeholder="Enter image description..."></textarea>
+                    <label for="description" class="block text-gray-700 mb-2">Description:</label>
+                    <textarea type="text" name="description" rows="5"  class="w-full p-2 border border-gray-300 text-black rounded-md" placeholder="Description of the Post"></textarea>
                 </div>
+                
             
                 <!-- Submit button -->
-                <button type="submit" class="bg-blue-500 block mt-1 w-full text-white px-4 py-2 rounded-md">Post</button>
+                <button type="submit" class="bg-blue-500 block mt-1 w-full text-white px-4 py-2 rounded-md">Add Post</button>
             
               </form>
             

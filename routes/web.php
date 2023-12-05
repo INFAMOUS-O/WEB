@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::post('/dashboard', [Dashboardcontroller::class,'dashboard']);
+Route::post('/dashboard', [Dashboardcontroller::class,'store']);
 
 require __DIR__.'/auth.php';
 
