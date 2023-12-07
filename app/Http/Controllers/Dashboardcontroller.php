@@ -11,7 +11,8 @@ class Dashboardcontroller extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        $posts = Post::all();
+        return view('dashboard',compact('posts'));
     }
 
    public function create()
@@ -26,8 +27,10 @@ class Dashboardcontroller extends Controller
 
    {
         $validatedData = $request->validate([
-            'description'=>'required|max:225'
+            'description'=>'required|max:225',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
+
        
 
         
@@ -35,7 +38,18 @@ class Dashboardcontroller extends Controller
         $post = new post;
         $post->description = $validatedData['description'];
         $post->user_id = Auth::user()->id;
+
+        if($request->hasfile('image'))
+        {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/students/',$filename);
+            $post->image = $filename;
+        }
         $post->save();
+
+        return redirect()->back();
 
        
 

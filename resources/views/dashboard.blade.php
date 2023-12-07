@@ -12,16 +12,16 @@
         <div class="font-sans font-bold pt-7 pb-1 border-b text-black"><h1>Upload New Post</h1></div>
         <form action="{{ route('dashboard.store', ['id' => Auth::user()->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
-                {{-- <!-- Image preview -->
+                <!-- Image preview -->
                 <div id="imagePreviewContainer" class="w-[300px] h-[260px] mb-4 overflow-hidden hidden">
                     <img id="previewImage" class="object-cover w-full h-full" src="" alt="Image Preview">
-                </div> --}}
+                </div> 
 
-                {{-- <!-- Input field for image selection -->
+                <!-- Input field for image selection -->
                 <input type="file" id="image" name="image" class="hidden" accept="image/*">
                 <label for="image" class="cursor-pointer w-[300px] flex items-center mb-4 p-4 bg-white border border-gray-300 rounded-md shadow-md">
                   <span class="text-gray-700 mr-4">Select a picture</span>
-                </label> --}}
+                </label>
   
         
                         <!-- Image description -->
@@ -36,7 +36,7 @@
             
             
             
-              {{-- <script>
+              <script>
                 document.getElementById('image').addEventListener('change', function (event) {
                   const previewImage = document.getElementById('previewImage');
                   const imagePreviewContainer = document.getElementById('imagePreviewContainer');
@@ -52,8 +52,29 @@
                     reader.readAsDataURL(event.target.files[0]);
                   }
                 });
-              </script> --}}
+              </script> 
         </form>
      </div>
+
+     <div class="fixed left-[600px] min-h-screen flex items-center justify-center">
+      @foreach($posts as $post)
+          <div class="bg-white shadow-md p-6 rounded-lg max-w-md mx-4 mb-8">
+              <!-- Image div -->
+              <div class="mb-4">
+                  <img src="public/uploads/'.{{$post->image}}" alt="Image" width="50" height="50">
+              </div>
+
+              <!-- Description div -->
+              <div>
+                  <p class="text-gray-700 text-base">
+                      Description: {{ $post->description }}
+                  </p>
+              </div>
+          </div>
+      @endforeach
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
     
 </x-app-layout>
