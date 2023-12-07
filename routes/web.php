@@ -21,7 +21,8 @@ Route::get('/', [Homecontroller::class,'homepage']);
 
 Route::get('/home', [Homecontroller::class,'index'])->middleware('auth')->name('home');
 
-Route::get('/dashboard', [Dashboardcontroller::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [Dashboardcontroller::class,'index'])->middleware(['auth', 'verified'])->name('dashboard.index');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -30,7 +31,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::post('/dashboard', [Dashboardcontroller::class,'store']);
+Route::post('/dashboard', [Dashboardcontroller::class,'store'])->middleware(['auth', 'verified'])->name('dashboard.store');
 
 require __DIR__.'/auth.php';
 
