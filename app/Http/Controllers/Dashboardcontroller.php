@@ -40,11 +40,11 @@ class Dashboardcontroller extends Controller
         $post->user_id = Auth::user()->id;
 
         if($request->hasfile('image'))
-        {
+          {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time().'.'.$extension;
-            $file->move('uploads/students/',$filename);
+            $file->move('public/uploads/',$filename);
             $post->image = $filename;
         }
         $post->save();

@@ -61,7 +61,7 @@
           <div class="bg-white shadow-md p-6 rounded-lg max-w-md mx-4 mb-8">
               <!-- Image div -->
               <div class="mb-4">
-                  <img src="public/uploads/'.{{$post->image}}" alt="Image" width="50" height="50">
+                  <img src="{{ asset('public/uploads/' . $post->image) }}" alt="Image" width="50" height="50">
               </div>
 
               <!-- Description div -->
