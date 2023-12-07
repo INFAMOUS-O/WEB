@@ -22,6 +22,11 @@ Route::get('/', [Homecontroller::class,'homepage']);
 Route::get('/home', [Homecontroller::class,'index'])->middleware('auth')->name('home');
 
 Route::get('/dashboard', [Dashboardcontroller::class,'index'])->middleware(['auth', 'verified'])->name('dashboard.index');
+Route::post('/dashboard', [Dashboardcontroller::class,'store'])->middleware(['auth', 'verified'])->name('dashboard.store');
+
+Route::get('/dashboard/{id}', [Dashboardcontroller::class,'delete'])->middleware(['auth', 'verified'])->name('dashboard.delete');
+Route::get('/dashboard/edit/{id}', [Dashboardcontroller::class,'edit'])->middleware(['auth', 'verified'])->name('dashboard.edit');
+Route::post('/dashboard/edit/{id}', [Dashboardcontroller::class,'update'])->middleware(['auth', 'verified'])->name('dashboard.update');
 
 
 Route::middleware('auth')->group(function () {
@@ -30,8 +35,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-Route::post('/dashboard', [Dashboardcontroller::class,'store'])->middleware(['auth', 'verified'])->name('dashboard.store');
 
 require __DIR__.'/auth.php';
 

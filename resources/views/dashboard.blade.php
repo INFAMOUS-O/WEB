@@ -68,9 +68,14 @@
               <div>
                   <p class="text-gray-700 text-base">
                       Description: {{ $post->description }}
+                      
                   </p>
+                  <a href="{{ route('dashboard.delete', $post->id) }}">delete</a>
+                  <a href="{{ route('dashboard.edit', $post->id) }}">edit</a>
               </div>
           </div>
+
+          
       @endforeach
     </div>
 
