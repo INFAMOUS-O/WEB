@@ -55,8 +55,15 @@
               </script> 
         </form>
      </div>
+     <div class="fixed flex items-center justify-center left-[610px] w-[920px] h-[294px] bg-black border border-black border-opacity-5 overflow-hidden">
+      <div class="bg-white w-[430px] h-[250px] shadow-lg rounded-lg">
 
-     <div class="fixed left-[600px] min-h-screen flex items-center justify-center">
+         
+      </div>
+  </div>
+
+
+     <div class="fixed left-[600px] top-[400px]  flex ">
       @foreach($posts as $post)
           <div class="bg-white shadow-md p-6 rounded-lg max-w-md mx-4 mb-8">
               <!-- Image div -->

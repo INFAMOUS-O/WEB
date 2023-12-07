@@ -98,7 +98,7 @@ class Dashboardcontroller extends Controller
         }
         $post->save();
 
-        return redirect()->back();
+        return redirect('dashboard');
 
         
     }
