@@ -65,25 +65,24 @@
 
      <div class="fixed left-[600px] top-[400px]  flex ">
       @foreach($posts as $post)
-          <div class="bg-white shadow-md p-6 rounded-lg max-w-md mx-4 mb-8">
-              <!-- Image div -->
-              <div class="mb-4">
-                  <img src="{{ asset('public/uploads/' . $post->image) }}" alt="Image" width="50" height="50">
-              </div>
+    @if($post->user_id == Auth::user()->id)
+        <div class="bg-white shadow-md p-6 rounded-lg max-w-md mx-4 mb-8">
+            <!-- Image div -->
+            <div class="mb-4">
+                <img src="{{ asset('public/uploads/' . $post->image) }}" alt="Image" width="50" height="50">
+            </div>
 
-              <!-- Description div -->
-              <div>
-                  <p class="text-gray-700 text-base">
-                      Description: {{ $post->description }}
-                      
-                  </p>
-                  <a href="{{ route('dashboard.delete', $post->id) }}">delete</a>
-                  <a href="{{ route('dashboard.edit', $post->id) }}">edit</a>
-              </div>
-          </div>
-
-          
-      @endforeach
+            <!-- Description div -->
+            <div>
+                <p class="text-gray-700 text-base">
+                    Description: {{ $post->description }}
+                </p>
+                <a href="{{ route('dashboard.delete', $post->id) }}">delete</a>
+                <a href="{{ route('dashboard.edit', $post->id) }}">edit</a>
+            </div>
+        </div>
+    @endif
+@endforeach
     </div>
 
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>

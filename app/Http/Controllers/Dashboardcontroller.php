@@ -15,13 +15,7 @@ class Dashboardcontroller extends Controller
         return view('dashboard',compact('posts'));
     }
 
-   public function create()
-   {
-    $user = Auth::user();
-    return view ('dashboard',compact('user'));
-
-
-   }
+  
 
    public function store(Request $request)
 

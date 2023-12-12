@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Homecontroller;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboardcontroller;
 
@@ -17,9 +18,8 @@ use App\Http\Controllers\Dashboardcontroller;
 |
 */
 
-Route::get('/', [Homecontroller::class,'homepage']);
-
-Route::get('/home', [Homecontroller::class,'index'])->middleware('auth')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('homepage.index');
+Route::post('/{id}', [CommentController::class, 'store'])->name('comments.store');
 
 Route::get('/dashboard', [Dashboardcontroller::class,'index'])->middleware(['auth', 'verified'])->name('dashboard.index');
 Route::post('/dashboard', [Dashboardcontroller::class,'store'])->middleware(['auth', 'verified'])->name('dashboard.store');
