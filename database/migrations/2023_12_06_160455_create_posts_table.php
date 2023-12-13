@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('description');
             $table->string('image')->nullable();
+            $table->string('name')->nullable();
             $table->string('view')->nullable();
             $table->string('like')->nullable();
             $table->string('usertype')->nullable();

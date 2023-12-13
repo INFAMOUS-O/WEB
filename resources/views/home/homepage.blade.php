@@ -56,7 +56,7 @@
                         <!-- User Name -->
                         <div class="mt-4">
                             <p class="text-gray-500 text-sm">
-                                Posted by: {{ optional($post->user)->name ?? 'Unknown User' }}
+                                Posted by: {{$post->name}}
                             </p>
                         </div>
                     </div>

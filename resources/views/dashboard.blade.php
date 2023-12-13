@@ -58,6 +58,9 @@
      <div class="fixed flex items-center justify-center left-[610px] w-[920px] h-[294px] bg-black border border-black border-opacity-5 overflow-hidden">
       <div class="bg-white w-[430px] h-[250px] shadow-lg rounded-lg">
 
+        <p>Numbers of likes:</p>
+        
+      
          
       </div>
   </div>

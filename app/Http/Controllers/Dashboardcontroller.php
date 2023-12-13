@@ -32,6 +32,7 @@ class Dashboardcontroller extends Controller
         $post = new post;
         $post->description = $validatedData['description'];
         $post->user_id = Auth::user()->id;
+        $post->name = Auth::user()->name;
 
         if($request->hasfile('image'))
           {
