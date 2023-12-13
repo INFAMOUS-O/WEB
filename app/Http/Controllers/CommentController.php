@@ -8,25 +8,17 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, $id)
+    public function store(Request $request, Post $post)
     {
-        $validatedData = $request->validate([
-            'content' => 'required|max:225',
+        $request->validate([
+            'content' => 'required',
         ]);
-    
-        $post = Post::find($id);
-    
-        if (!$post) {
-            return redirect()->back()->with('error', 'Post not found.');
-        }
-    
-        $comment = new Comment();
-        $comment->content = $validatedData['content'];
-        $post->comments()->save($comment); // Associate the comment with the post
-    
-        return redirect()->back()->with('success', 'Comment posted successfully');
-    }
 
-    
-    
+        $post->comments()->create([
+            'user_id' => auth()->id(),
+            'content' => $request->input('content'),
+        ]);
+
+        return redirect()->route('posts.show', $post);
+    }
 }

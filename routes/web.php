@@ -19,7 +19,10 @@ use App\Http\Controllers\Dashboardcontroller;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage.index');
-Route::post('/{id}', [CommentController::class, 'store'])->name('comments.store');
+
+Route::get('/posts/{post}', [Homecontroller::class, 'show'])->middleware(['auth', 'verified'])->name('posts.show');
+Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->middleware(['auth', 'verified'])->name('comments.store');
+
 
 Route::get('/dashboard', [Dashboardcontroller::class,'index'])->middleware(['auth', 'verified'])->name('dashboard.index');
 Route::post('/dashboard', [Dashboardcontroller::class,'store'])->middleware(['auth', 'verified'])->name('dashboard.store');

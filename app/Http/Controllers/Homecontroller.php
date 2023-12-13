@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -36,9 +37,14 @@ class Homecontroller extends Controller
    
     public  function index()
     {
-        $comments = Comment::all();
+
         $posts = Post::all();
-        return view('home.homepage',compact('posts'));            
+        return view('home.homepage',compact(['posts']));            
+    }
+
+    public function show(Post $post)
+    {
+        return view('home.post', compact('post'));
     }
 
  

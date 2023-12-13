@@ -32,12 +32,15 @@
             @endif
 
 
-            <div class="container mx-auto mt-16">
+    
+            <div class=" mx-auto mt-16">
                 @foreach($posts as $post)
                     <div class="border border-blue-500 bg-white shadow-md p-8 rounded-lg mb-8 flex flex-col justify-center">
                         <!-- Image div -->
                         <div class="mb-6">
-                            <img src="{{ asset('public/uploads/' . $post->image) }}" alt="Image" class="h-[300px] w-[300px] object-cover mx-auto">
+                            <a href="{{ route('posts.show', $post) }}">
+                                <img src="{{ asset('public/uploads/' . $post->image) }}" alt="Image" class="h-[300px] w-[300px] object-cover mx-auto">
+                            </a>
                         </div>
             
                         <!-- Description div -->
@@ -50,31 +53,11 @@
                             </p>
                         </div>
             
-                        <!-- Comment Form -->
-                        <form action="{{ route('comments.store', ['id' => $post->id]) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <label for="content">Comment</label>
-                            <textarea type="text" name="content" id="content" cols="30" rows="10"></textarea>
-                            <button type="submit">Post Comment</button>
-                        </form>
-            
-                        <!-- Display Comments -->
+                        <!-- User Name -->
                         <div class="mt-4">
-                            <p class="text-gray-700 text-xl font-semibold mb-2">
-                                Comments
+                            <p class="text-gray-500 text-sm">
+                                Posted by: {{ optional($post->user)->name ?? 'Unknown User' }}
                             </p>
-                        
-                            @if($post->comments->count() > 0)
-                                @foreach($post->comments as $comment)
-                                    <p class="text-gray-700 text-base">
-                                        {{ $comment->content }}
-                                    </p>
-                                @endforeach
-                            @else
-                                <p class="text-gray-700 text-base">
-                                    No comments yet.
-                                </p>
-                            @endif
                         </div>
                     </div>
                 @endforeach
