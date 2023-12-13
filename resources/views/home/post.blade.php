@@ -50,7 +50,7 @@
                     @foreach($post->comments as $comment)
                         <div class="bg-gray-100 p-4 mb-2 rounded-md">
                             <p class="text-gray-700">{{ $comment->content }}</p>
-                            <h1>by:{{  Auth::user()->name}}</h1>
+                            <h1>by:{{ Auth::user()->name}}</h1>
                         </div>
                     @endforeach
                 </div>
