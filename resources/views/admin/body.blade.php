@@ -1,7 +1,7 @@
 <div class="page-content">
     <div class="page-header">
       <div class="container-fluid">
-        <h2 class="h5 no-margin-bottom">Dashboard</h2>
+        <a href="/dashboard" class="h5 no-margin-bottom">Dashboard</a>
       </div>
     </div>
     <section class="no-padding-top no-padding-bottom">
