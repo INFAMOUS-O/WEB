@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\ProviderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboardcontroller;
+
 
 
 /*
@@ -19,6 +21,10 @@ use App\Http\Controllers\Dashboardcontroller;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage.index');
+
+ 
+Route::get('/auth/{provider}/redirect',[ProviderController::class,'redirect']);
+Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);
 
 Route::get('/posts/{post}', [Homecontroller::class, 'show'])->middleware(['auth', 'verified'])->name('posts.show');
 Route::get('/post/{postId}/comments', [CommentController::class,'index'])->middleware(['auth', 'verified'])->name('comments.index');
