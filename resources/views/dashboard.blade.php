@@ -7,6 +7,16 @@
         <a href="#" class="mt-9 flex flex-col items-center justify-center"><x-iconsax-lin-notification class="w-7" />Notifications</a>
         <a href="#" class="mt-9 flex flex-col items-center justify-center"><x-css-more-o class="w-9"/>More</a>
     </div>
+    @if ($errors->any())
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <strong class="font-bold">Validation Error!</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+      </div>
+    @endif
 
     <div class="fixed h-screen items-center  w-[400px] ml-[210px] flex flex-col bg-white  text-white shadow-lg">
         <div class="font-sans font-bold pt-7 pb-1 border-b text-black"><h1>Upload New Post</h1></div>

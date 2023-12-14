@@ -50,12 +50,40 @@
                     @foreach($post->comments as $comment)
                         <div class="bg-gray-100 p-4 mb-2 rounded-md">
                             <p class="text-gray-700">{{ $comment->content }}</p>
-                            <h1>by:{{ Auth::user()->name}}</h1>
+                            <h1>by:{{$comment->name}}</h1>
                         </div>
                     @endforeach
                 </div>
             </div>
         </div>
+
+        @if ($errors->any())
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <strong class="font-bold">Validation Error!</strong>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+          </div>
+        @endif
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                loadComments();
+        
+                function loadComments() {
+                    $.ajax({
+                        url: '{{ route('comments.index', $post->id) }}',
+                        type: 'GET',
+                        success: function (data) {
+                            $('#comments-container').html(data);
+                        }
+                    });
+                }
+            });
+        </script>
 
     
 </body>
