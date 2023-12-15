@@ -22,7 +22,6 @@ use App\Http\Controllers\Dashboardcontroller;
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage.index');
 
- 
 Route::get('/auth/{provider}/redirect',[ProviderController::class,'redirect']);
 Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);
 

@@ -65,15 +65,7 @@
               </script> 
         </form>
      </div>
-     <div class="fixed flex items-center justify-center left-[610px] w-[920px] h-[294px] bg-black border border-black border-opacity-5 overflow-hidden">
-      <div class="bg-white w-[430px] h-[250px] shadow-lg rounded-lg">
-
-        <p>Numbers of likes:</p>
-        
-      
-         
-      </div>
-  </div>
+    
 
 
      <div class="fixed left-[600px] top-[400px]  flex ">
@@ -87,11 +79,11 @@
 
             <!-- Description div -->
             <div>
-                <p class="text-gray-700 text-base">
+                <p class="text-gray-700 text-base mb-3 ">
                     Description: {{ $post->description }}
                 </p>
-                <a href="{{ route('dashboard.delete', $post->id) }}">delete</a>
-                <a href="{{ route('dashboard.edit', $post->id) }}">edit</a>
+                <a href="{{ route('dashboard.delete', $post->id) }}"  class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">delete</a>
+                <a href="{{ route('dashboard.edit', $post->id) }}" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">edit</a>
             </div>
         </div>
     @endif

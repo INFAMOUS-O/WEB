@@ -45,34 +45,22 @@ class Dashboardcontroller extends Controller
         $post->save();
 
         return redirect()->back();
-
-       
-
     }
-
-
     public function delete($id)
     {
         $post = Post::find($id);
-    
         if (!$post) {
             return redirect()->back()->with('error', 'Post not found.');
         }
-    
         $post->delete();
-    
         return redirect()->back();
     }
-
-    public function edit($id)
-
+     public function edit($id)
     {   
         $post = Post::find($id);
         return view('dashboard.edit',compact('post') );
     }
-
     public function update(Request $request, $id)
-
     {   
         $validatedData = $request->validate([
             'description'=>'required|max:225',
@@ -82,7 +70,6 @@ class Dashboardcontroller extends Controller
         $post = Post::find($id);
         $post->description = $validatedData['description'];
         $post->user_id = Auth::user()->id;
-
         if($request->hasfile('image'))
           {
             $file = $request->file('image');
@@ -92,10 +79,7 @@ class Dashboardcontroller extends Controller
             $post->image = $filename;
         }
         $post->save();
-
         return redirect('dashboard');
-
-        
     }
 
 

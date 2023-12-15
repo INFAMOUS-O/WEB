@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+         <!-- Fonts -->
+         <link rel="preconnect" href="https://fonts.bunny.net">
+         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+ 
+         <!-- Styles -->
+         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
-<body>
-    <div class="font-sans font-bold pt-7 pb-1 border-b text-black"><h1>Upload New Post</h1></div>
+<body class="w-[300px] justify-center ">
+    <div class="font-sans font-bold border-b text-black"><h1>Upload New Post</h1></div>
         <form action="{{ route('dashboard.update', $post->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
                 
 
                 <!-- Input field for image selection -->
                 <input type="file" id="image" value="{{ asset('public/uploads/' . $post->image) }}"  name="image" class="hidden" accept="image/*">
-                <label for="image" class="cursor-pointer w-[300px] flex items-center mb-4 p-4 bg-white border border-gray-300 rounded-md shadow-md">
+                <label for="image" class="cursor-pointer w-[300px] flex items-center mb-4 p-4 bg-white border border-gray-300 rounded-md shadow-md">select an image
                 </label>
   
         
